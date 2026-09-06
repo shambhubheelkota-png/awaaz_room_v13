@@ -19,7 +19,7 @@ jobs:
           echo "$GITHUB_WORKSPACE/_flutter/bin" >> $GITHUB_PATH
           
       - name: Create Android Platform
-        run: flutter create --platforms=android --no-pub --force.
+        run: flutter create --platforms=android --no-pub.
         
       - name: Commit and Push Android Folder
         run: |
