@@ -18,14 +18,17 @@ jobs:
           git clone https://github.com/flutter/flutter.git --branch stable --depth 1 _flutter
           echo "$GITHUB_WORKSPACE/_flutter/bin" >> $GITHUB_PATH
           
-      - name: Create Android Platform
-        run: `flutter `create`--platforms`=android,ios`
+          - name: Create Android Platform
+      run: |
+        flutter create . --platforms=android,ios
         
-      - name: Commit and Push Android Folder
-        run: |
-          git config --global user.name "GitHub Action"
-          git config --global user.email "action@github.com"
-          git add android/
-          git commit -m "Auto-generate android folder" || echo "No changes to commit"
-          git push
+        
+        - name: Commit and Push Android Folder
+      run: |
+        git config --global user.name "GitHub Action"
+        git config --global user.email "action@github.com"
+        git add android/
+        git commit -m "Auto-generate android folder" || echo "No changes to commit"
+        git push
+  
           
