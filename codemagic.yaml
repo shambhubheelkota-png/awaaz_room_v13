@@ -1,3 +1,4 @@
+
 workflows:
   android-build:
     name: Awaaz Room V13 APK Build
@@ -6,6 +7,9 @@ workflows:
     environment:
       flutter: stable
     scripts:
+      - name: Generate Android Folder
+        script: |
+          flutter create . --org com.example --platforms android
       - name: Get Flutter Packages
         script: |
           flutter pub get
