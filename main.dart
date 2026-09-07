@@ -11,7 +11,7 @@ class AwaazRoomApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Awaaz Room',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFF6750A4)),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
       home: const HomeScreen(),
