@@ -119,6 +119,7 @@ class RoomScreen extends StatefulWidget {
 class _RoomScreenState extends State<RoomScreen> {
   bool muted = true;
   bool handRaised = false;
+
   final participants = const [
     ('आप', 'Listener'),
     ('आरव', 'Host'),
@@ -151,7 +152,12 @@ class _RoomScreenState extends State<RoomScreen> {
                   final person = participants[index];
                   return Column(
                     children: [
-                      CircleAvatar(radius: 30, child: Text(person.$1.characters.first)),
+                      CircleAvatar(
+                        radius: 30,
+                        child: Text(
+                          person.$1.isNotEmpty ? person.$1[0] : '',
+                        ),
+                      ),
                       const SizedBox(height: 6),
                       Text(person.$1, overflow: TextOverflow.ellipsis),
                       Text(person.$2, style: Theme.of(context).textTheme.bodySmall),
