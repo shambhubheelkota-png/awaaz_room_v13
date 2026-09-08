@@ -22,7 +22,6 @@ workflows:
         script: |
           flutter build apk \
             --debug \
-            --flavor android-production \
             -t lib/main.dart
 
     artifacts:
