@@ -2,19 +2,28 @@
 workflows:
   android-build:
     name: Awaaz Room V13 APK Build
-    max_build_duration: 30
-    instance_type: mac_mini_m1
+    max_build_duration: 45
+    instance_type: mac_mini_m2
+
     environment:
-      flutter: stable
+      flutter: 3.47.2
+
     scripts:
-      - name: Generate Android Folder
+      - name: Pre-clean & dependencies
         script: |
-          flutter create . --org com.example --platforms android
-      - name: Get Flutter Packages
-        script: |
+          flutter clean
+          rm -rf ~/.pub-cache
+          rm -rf ~/.gradle
+          rm -rf android/.gradle
+          rm -rf android/build
           flutter pub get
-      - name: Build Android APK
+
+      - name: Build Android APK (Debug)
         script: |
-          flutter build apk --release
+          flutter build apk \
+            --debug \
+            --flavor android-production \
+            -t lib/main_prod.dart
+
     artifacts:
       - build/app/outputs/flutter-apk/*.apk
