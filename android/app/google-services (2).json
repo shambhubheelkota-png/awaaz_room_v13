@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "559303305255",
+    "project_id": "awaaz-room",
+    "storage_bucket": "awaaz-room.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:559303305255:android:8c324bf2945a5643de0602",
+        "android_client_info": {
+          "package_name": "com.example.awaaz_room"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBWMNzIKTR_VwLeiIbzGKo3FZE57P9vPyM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:559303305255:android:6262ab0b0a1e23d7de0602",
+        "android_client_info": {
+          "package_name": "com.shambhu.awaazroom"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBWMNzIKTR_VwLeiIbzGKo3FZE57P9vPyM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
