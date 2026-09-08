@@ -23,7 +23,7 @@ workflows:
           flutter build apk \
             --debug \
             --flavor android-production \
-            -t lib/main_prod.dart
+            -t lib/main.dart
 
     artifacts:
       - build/app/outputs/flutter-apk/*.apk
