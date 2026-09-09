@@ -13,9 +13,6 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Set Working Directory
-        run: cd awaaz_room_v13
-
       - name: Setup Flutter
         uses: subosito/flutter-action@v2
         with:
@@ -40,4 +37,3 @@ jobs:
           name: awaaz-room-apk
           path: awaaz_room_v13/build/app/outputs/flutter-apk/app-release.apk
           if-no-files-found: error
-          
