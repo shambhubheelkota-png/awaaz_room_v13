@@ -1,43 +1,37 @@
 plugins {
     id("com.android.application")
+    id("org.jetbrains.kotlin.android")
     id("dev.flutter.flutter-gradle-plugin")
 }
 
 android {
     namespace = "com.example.awaaz_room"
 
-    // ⭐ FIXED — flutter_webrtc + livekit_client require SDK 36+
+    // ⭐ Required for flutter_webrtc + livekit_client
     compileSdk = 36
-    ndkVersion = flutter.ndkVersion
+
+    defaultConfig {
+        applicationId = "com.example.awaaz_room"
+        minSdk = 23
+        targetSdk = 36
+        versionCode = flutter.versionCode
+        versionName = flutter.versionName
+    }
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
     }
 
-    defaultConfig {
-        applicationId = "com.example.awaaz_room"
-
-        // ⭐ FIXED — minSdk should match Flutter default
-        minSdk = flutter.minSdkVersion
-
-        // ⭐ FIXED — targetSdk must be 36
-        targetSdk = 36
-
-        versionCode = flutter.versionCode
-        versionName = flutter.versionName
+    kotlinOptions {
+        // ⭐ FIX: AGP 9.0 requires this syntax
+        jvmTarget = "17"
     }
 
     buildTypes {
         release {
             signingConfig = signingConfigs.getByName("debug")
         }
-    }
-}
-
-kotlin {
-    jvmToolchain {
-        jvmTarget = org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17
     }
 }
 
