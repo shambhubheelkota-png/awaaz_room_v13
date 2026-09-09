@@ -7,7 +7,7 @@ plugins {
 android {
     namespace = "com.example.awaaz_room"
 
-    // Required for flutter_webrtc + livekit_client
+    // ⭐ Required for flutter_webrtc + livekit_client
     compileSdk = 36
 
     defaultConfig {
