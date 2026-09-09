@@ -226,7 +226,7 @@ class _HomeScreenState extends State<HomeScreen> {
       height: 55,
       color: Colors.white,
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           _topTab('माइन', false),
           _topTab('पॉप्युलर', true),
