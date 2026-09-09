@@ -21,19 +21,17 @@ jobs:
 
       - name: Flutter Version
         run: flutter --version
-        working-directory: awaaz_room_v13
 
       - name: Get Dependencies
         run: flutter pub get
-        working-directory: awaaz_room_v13
 
       - name: Build APK
         run: flutter build apk --release -t lib/main.dart
-        working-directory: awaaz_room_v13
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: awaaz-room-apk
-          path: awaaz_room_v13/build/app/outputs/flutter-apk/app-release.apk
+          path: build/app/outputs/flutter-apk/app-release.apk
           if-no-files-found: error
+          
