@@ -12,18 +12,18 @@ dependencies:
 
   cupertino_icons: ^1.0.8
 
-  # Correct WebRTC + LiveKit versions (Android 36 compatible)
-  flutter_webrtc: 0.11.7
+  # Correct WebRTC + LiveKit versions (Compatible with Android SDK 34–36)
+  flutter_webrtc: ^1.6.2+hotfix.1
+  livekit_client: ^2.5.0+hotfix.3
   socket_io_client: ^3.1.6
-  livekit_client: 2.5.0+hotfix.3
   http: ^1.2.2
 
-  # Correct Firebase versions (SDK 3.3.0 compatible)
-  cloud_firestore: ^6.1.1
-  firebase_app_check: ^0.4.7
-  firebase_messaging: ^16.6.0
-  firebase_auth: ^6.6.1
+  # Firebase (SDK 3.3.0 compatible)
   firebase_core: ^4.3.0
+  firebase_auth: ^6.6.1
+  cloud_firestore: ^6.1.1
+  firebase_messaging: ^16.6.0
+  firebase_app_check: ^0.4.7
 
 dev_dependencies:
   flutter_test:
