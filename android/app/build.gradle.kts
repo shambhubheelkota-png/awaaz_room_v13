@@ -7,7 +7,7 @@ plugins {
 android {
     namespace = "com.example.awaaz_room"
 
-    // ⭐ Required for flutter_webrtc + livekit_client
+    // Required for flutter_webrtc + livekit_client
     compileSdk = 36
 
     defaultConfig {
@@ -23,15 +23,16 @@ android {
         targetCompatibility = JavaVersion.VERSION_17
     }
 
-    kotlinOptions {
-        // ⭐ FIX: AGP 9.0 requires this syntax
-        jvmTarget = "17"
-    }
-
     buildTypes {
         release {
             signingConfig = signingConfigs.getByName("debug")
         }
+    }
+}
+
+kotlin {
+    compilerOptions {
+        jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17)
     }
 }
 
