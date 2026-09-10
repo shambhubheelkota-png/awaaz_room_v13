@@ -2,7 +2,7 @@ name: Build Awaaz Room APK
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   workflow_dispatch:
 
 jobs:
@@ -22,15 +22,29 @@ jobs:
       - name: Flutter Version
         run: flutter --version
 
+      - name: Find Flutter Project
+        shell: bash
+        run: |
+          PROJECT_DIR=$(find . -maxdepth 4 -name pubspec.yaml -print -quit | xargs dirname)
+
+          if [ -z "$PROJECT_DIR" ] || [ "$PROJECT_DIR" = "." ]; then
+            PROJECT_DIR="."
+          fi
+
+          echo "Flutter project found at: $PROJECT_DIR"
+          echo "PROJECT_DIR=$PROJECT_DIR" >> "$GITHUB_ENV"
+
       - name: Get Dependencies
+        working-directory: ${{ env.PROJECT_DIR }}
         run: flutter pub get
 
-      - name: Build APK
+      - name: Build Android APK
+        working-directory: ${{ env.PROJECT_DIR }}
         run: flutter build apk --release -t lib/main.dart
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: awaaz-room-apk
-          path: build/app/outputs/flutter-apk/app-release.apk
+          path: "**/build/app/outputs/flutter-apk/app-release.apk"
           if-no-files-found: error
