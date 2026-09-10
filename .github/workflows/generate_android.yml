@@ -25,22 +25,37 @@ jobs:
       - name: Find Flutter Project
         shell: bash
         run: |
-          PROJECT_DIR=$(find . -maxdepth 4 -name pubspec.yaml -print -quit | xargs dirname)
+          PUBSPEC=$(find "$GITHUB_WORKSPACE" -name pubspec.yaml -type f -print -quit)
 
-          if [ -z "$PROJECT_DIR" ] || [ "$PROJECT_DIR" = "." ]; then
-            PROJECT_DIR="."
+          if [ -z "$PUBSPEC" ]; then
+            echo "ERROR: pubspec.yaml not found!"
+            exit 1
           fi
 
-          echo "Flutter project found at: $PROJECT_DIR"
+          PROJECT_DIR=$(dirname "$PUBSPEC")
+
+          echo "Flutter project found at:"
+          echo "$PROJECT_DIR"
+
           echo "PROJECT_DIR=$PROJECT_DIR" >> "$GITHUB_ENV"
 
       - name: Get Dependencies
-        working-directory: ${{ env.PROJECT_DIR }}
-        run: flutter pub get
+        shell: bash
+        run: |
+          cd "$PROJECT_DIR"
+          echo "Current directory:"
+          pwd
+          echo "pubspec.yaml:"
+          ls -la pubspec.yaml
+          flutter pub get
 
       - name: Build Android APK
-        working-directory: ${{ env.PROJECT_DIR }}
-        run: flutter build apk --release -t lib/main.dart
+        shell: bash
+        run: |
+          cd "$PROJECT_DIR"
+          echo "Building from:"
+          pwd
+          flutter build apk --release -t lib/main.dart
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
